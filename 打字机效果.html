@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>打字机效果</title>
+	</head>
+	<body onload="a.Show(cont)">
+		<div id="box">		
+		</div>
+		<script type="text/javascript">		
+			var box = document.getElementById("box");
+			var cont = "Love is a light that never dies";
+			var index = 0;
+			var ShowObj = function(){};
+			ShowObj.prototype = {
+				Show : function(charstr){
+					index++;
+					var str = charstr.substr(0,index);  
+					box.innerHTML = str+'_';		//输出到网页
+					if(index>charstr.length){
+						box.innerHTML = str;
+						index = 0;
+					}else{
+						setTimeout(function(){
+							a.Show(charstr);
+						},50);
+					}
+				}
+			}
+			var a = new ShowObj();			
+		</script>
+	</body>
+</html>
